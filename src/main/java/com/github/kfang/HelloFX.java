@@ -16,6 +16,10 @@ public class HelloFX extends Application {
         Scene scene = new Scene(new StackPane(l), 640, 480);
         stage.setScene(scene);
         stage.show();
+
+        SalesReceiptGenerator.generate(100).forEach((receipt) -> {
+            System.out.println(receipt.toString());
+        });
     }
 
     public static void main(String[] args) {
