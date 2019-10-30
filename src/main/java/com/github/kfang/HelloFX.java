@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class HelloFX extends Application {
 
     @Override
@@ -17,9 +19,9 @@ public class HelloFX extends Application {
         stage.setScene(scene);
         stage.show();
 
-        SalesReceiptGenerator.generate(100).forEach((receipt) -> {
-            System.out.println(receipt.toString());
-        });
+        List<SalesReceipt> receipts = SalesReceiptGenerator.generate(100);
+        List<SalesReceiptGroup> groups = SalesReceiptGroup.fromReceipts(receipts);
+        System.out.println(groups.size());
     }
 
     public static void main(String[] args) {
