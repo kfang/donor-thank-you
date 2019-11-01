@@ -6,13 +6,13 @@
 <?import javafx.scene.layout.*?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.kfang.MainController">
    <children>
       <HBox>
          <children>
             <Label prefHeight="40.0" prefWidth="190.0" text="Donors File:" />
-            <TextField prefHeight="39.0" prefWidth="598.0" />
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" text="Browse" />
+            <TextField fx:id="donorsFileTextField" prefHeight="39.0" prefWidth="598.0" />
+            <Button mnemonicParsing="false" onAction="#onDonorsBrowse" prefHeight="40.0" prefWidth="170.0" text="Browse" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -21,8 +21,8 @@
       <HBox>
          <children>
             <Label prefHeight="40.0" prefWidth="190.0" text="Template File:" />
-            <TextField prefHeight="39.0" prefWidth="598.0" />
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="170.0" text="Browse" />
+            <TextField fx:id="templateFileTextField" prefHeight="39.0" prefWidth="598.0" />
+            <Button mnemonicParsing="false" onAction="#onTemplateBrowse" prefHeight="40.0" prefWidth="170.0" text="Browse" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
