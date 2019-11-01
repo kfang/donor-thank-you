@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.kfang.MainController">
+   <children>
+      <HBox>
+         <children>
+            <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="190.0" text="Donors File:">
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="donorsFileTextField" disable="true" prefHeight="39.0" prefWidth="598.0" />
+            <Button mnemonicParsing="false" onAction="#onDonorsBrowse" prefHeight="40.0" prefWidth="170.0" text="Browse" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <Label alignment="BOTTOM_RIGHT" prefHeight="40.0" prefWidth="190.0" text="Template File:">
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="templateFileTextField" disable="true" prefHeight="39.0" prefWidth="598.0" />
+            <Button mnemonicParsing="false" onAction="#onTemplateBrowse" prefHeight="40.0" prefWidth="170.0" text="Browse" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </VBox.margin>
+      </HBox>
+      <TabPane prefHeight="597.0" prefWidth="784.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Transactions">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+          <Tab text="Donors">
+            <content>
+              <AnchorPane />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</VBox>
