@@ -3,20 +3,41 @@ package com.github.kfang;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
 
 
 public class MainController {
-    @FXML
-    TextField donorsFileTextField;
+    @FXML TextField donorsFileTextField;
     @FXML TextField templateFileTextField;
+
+    private Stage stage;
+    private File donorsFile;
+    private File templateFile;
+
+    public void setState(Stage stage) {
+        this.stage = stage;
+    }
 
     @FXML
     protected void onDonorsBrowse(ActionEvent event) {
-        donorsFileTextField.setText("HELLO DONORS");
+        FileChooser chooser = new FileChooser();
+        File file = chooser.showOpenDialog(this.stage);
+        if (file != null) {
+            donorsFileTextField.setText(file.getAbsolutePath());
+            this.donorsFile = file;
+        }
     }
 
     @FXML
     protected void onTemplateBrowse(ActionEvent event) {
-        templateFileTextField.setText("HELLO TEMPLATE");
+        FileChooser chooser = new FileChooser();
+        File file = chooser.showOpenDialog(this.stage);
+        if (file != null) {
+            templateFileTextField.setText(file.getAbsolutePath());
+            this.templateFile = file;
+        }
     }
 }

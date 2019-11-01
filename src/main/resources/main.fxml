@@ -10,8 +10,12 @@
    <children>
       <HBox>
          <children>
-            <Label prefHeight="40.0" prefWidth="190.0" text="Donors File:" />
-            <TextField fx:id="donorsFileTextField" prefHeight="39.0" prefWidth="598.0" />
+            <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="190.0" text="Donors File:">
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="donorsFileTextField" disable="true" prefHeight="39.0" prefWidth="598.0" />
             <Button mnemonicParsing="false" onAction="#onDonorsBrowse" prefHeight="40.0" prefWidth="170.0" text="Browse" />
          </children>
          <VBox.margin>
@@ -20,8 +24,12 @@
       </HBox>
       <HBox>
          <children>
-            <Label prefHeight="40.0" prefWidth="190.0" text="Template File:" />
-            <TextField fx:id="templateFileTextField" prefHeight="39.0" prefWidth="598.0" />
+            <Label alignment="BOTTOM_RIGHT" prefHeight="40.0" prefWidth="190.0" text="Template File:">
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="templateFileTextField" disable="true" prefHeight="39.0" prefWidth="598.0" />
             <Button mnemonicParsing="false" onAction="#onTemplateBrowse" prefHeight="40.0" prefWidth="170.0" text="Browse" />
          </children>
          <VBox.margin>

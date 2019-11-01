@@ -13,7 +13,11 @@ public class HelloFX extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/main.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main.fxml"));
+        Parent root = loader.load();
+
+        MainController controller = loader.getController();
+        controller.setState(stage);
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
