@@ -2,11 +2,9 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.kfang.MainController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.kfang.MainController">
    <children>
       <HBox>
          <children>
@@ -40,7 +38,19 @@
         <tabs>
           <Tab text="Transactions">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="transactionsTable" prefHeight="554.6666666666666" prefWidth="784.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn editable="false" prefWidth="75.0" text="Date" />
+                            <TableColumn editable="false" prefWidth="75.0" text="Name" />
+                              <TableColumn editable="false" prefWidth="75.0" text="Address" />
+                              <TableColumn editable="false" prefWidth="75.0" text="Account" />
+                              <TableColumn editable="false" prefWidth="75.0" text="Class" />
+                              <TableColumn editable="false" prefWidth="75.0" text="Amount" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
             </content>
           </Tab>
           <Tab text="Donors">
