@@ -10,9 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.List;
 
 
@@ -65,5 +63,10 @@ public class MainController {
             templateFileTextField.setText(file.getAbsolutePath());
             this.templateFile = file;
         }
+    }
+
+    @FXML
+    public void onGenerate(ActionEvent event) throws FileNotFoundException {
+        ApachePoi.writeReceipts(this.templateFile, this.donorTableItems);
     }
 }
