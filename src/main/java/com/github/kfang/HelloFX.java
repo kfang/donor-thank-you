@@ -22,10 +22,6 @@ public class HelloFX extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-        List<SalesReceipt> receipts = SalesReceiptGenerator.generate(100);
-        List<SalesReceiptGroup> groups = SalesReceiptGroup.fromReceipts(receipts);
-        System.out.println(groups.size());
     }
 
     public static void main(String[] args) {

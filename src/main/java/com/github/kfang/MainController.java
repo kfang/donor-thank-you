@@ -1,5 +1,8 @@
 package com.github.kfang;
 
+import com.opencsv.bean.CsvToBeanBuilder;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
@@ -8,25 +11,29 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.List;
 
 
 public class MainController {
+    @FXML
+    public ObservableList<SalesReceipt> transactionsTableItems;
+
+    @FXML
+    public ObservableList<SalesReceiptGroup> donorTableItems;
+
     @FXML
     TextField donorsFileTextField;
 
     @FXML
     TextField templateFileTextField;
 
-    @FXML
-    TableView transactionsTable;
-
     private Stage stage;
-    private File donorsFile;
     private File templateFile;
 
     @FXML
     private void initialize() {
-
     }
 
     public void setState(Stage stage) {
@@ -34,12 +41,19 @@ public class MainController {
     }
 
     @FXML
-    protected void onDonorsBrowse(ActionEvent event) {
+    protected void onDonorsBrowse(ActionEvent event) throws FileNotFoundException {
         FileChooser chooser = new FileChooser();
         File file = chooser.showOpenDialog(this.stage);
         if (file != null) {
             donorsFileTextField.setText(file.getAbsolutePath());
-            this.donorsFile = file;
+            List<SalesReceipt> receipts =  new CsvToBeanBuilder<SalesReceipt>(new FileReader(file))
+                    .withType(SalesReceipt.class).build().parse();
+            this.transactionsTableItems.removeAll();
+            this.transactionsTableItems.addAll(receipts);
+
+            List<SalesReceiptGroup> groups = SalesReceiptGroup.fromReceipts(receipts);
+            this.donorTableItems.removeAll();
+            this.donorTableItems.addAll(groups);
         }
     }
 

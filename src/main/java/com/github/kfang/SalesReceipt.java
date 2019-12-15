@@ -1,78 +1,110 @@
 package com.github.kfang;
 
-import java.util.ArrayList;
+import com.opencsv.bean.CsvCustomBindByName;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 public class SalesReceipt {
 
-    private String date;
-    private String name;
-    private String address;
-    private String account;
-    private String fund;
-    private double amount;
-    private String check;
+    @CsvCustomBindByName(column = "Date", converter = TextToStringProperty.class)
+    private SimpleStringProperty date;
+    @CsvCustomBindByName(column = "Name", converter = TextToStringProperty.class)
+    private SimpleStringProperty name;
+    @CsvCustomBindByName(column = "Name Address", converter = TextToStringProperty.class)
+    private SimpleStringProperty address;
+    @CsvCustomBindByName(column = "Account", converter = TextToStringProperty.class)
+    private SimpleStringProperty account;
+    @CsvCustomBindByName(column = "Class", converter = TextToStringProperty.class)
+    private SimpleStringProperty fund;
+    @CsvCustomBindByName(column = "Amount", converter = TextToDoubleProperty.class)
+    private SimpleDoubleProperty amount;
+    @CsvCustomBindByName(column = "Check #", converter = TextToStringProperty.class)
+    private SimpleStringProperty check;
 
     public SalesReceipt() {
     }
 
     public String getDate() {
+        return date.get();
+    }
+
+    public SimpleStringProperty dateProperty() {
         return date;
     }
 
     public void setDate(String date) {
-        this.date = date;
+        this.date.set(date);
     }
 
     public String getName() {
+        return name.get();
+    }
+
+    public SimpleStringProperty nameProperty() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name.set(name);
     }
 
     public String getAddress() {
-        return address;
+        return this.address.get();
+    }
+
+    public SimpleStringProperty addressProperty() {
+        return this.address;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.address.set(address);
     }
 
     public String getAccount() {
+        return account.get();
+    }
+
+    public SimpleStringProperty accountProperty() {
         return account;
     }
 
     public void setAccount(String account) {
-        this.account = account;
+        this.account.set(account);
     }
 
     public String getFund() {
+        return fund.get();
+    }
+
+    public SimpleStringProperty fundProperty() {
         return fund;
     }
 
     public void setFund(String fund) {
-        this.fund = fund;
+        this.fund.set(fund);
     }
 
     public double getAmount() {
+        return amount.get();
+    }
+
+    public SimpleDoubleProperty amountProperty() {
         return amount;
     }
 
     public void setAmount(double amount) {
-        this.amount = amount;
+        this.amount.set(amount);
     }
 
     public String getCheck() {
+        return check.get();
+    }
+
+    public SimpleStringProperty checkProperty() {
         return check;
     }
 
     public void setCheck(String check) {
-        this.check = check;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s", this.getDate(), this.getName(), this.getAddress(), this.getAccount(), this.getFund(), this.getAmount(), this.getCheck());
+        this.check.set(check);
     }
 }

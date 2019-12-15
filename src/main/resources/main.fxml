@@ -1,64 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.kfang.MainController">
-   <children>
-      <HBox>
-         <children>
-            <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="190.0" text="Donors File:">
-               <padding>
-                  <Insets right="5.0" />
-               </padding>
-            </Label>
-            <TextField fx:id="donorsFileTextField" disable="true" prefHeight="39.0" prefWidth="598.0" />
-            <Button mnemonicParsing="false" onAction="#onDonorsBrowse" prefHeight="40.0" prefWidth="170.0" text="Browse" />
-         </children>
-         <VBox.margin>
-            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-         </VBox.margin>
-      </HBox>
-      <HBox>
-         <children>
-            <Label alignment="BOTTOM_RIGHT" prefHeight="40.0" prefWidth="190.0" text="Template File:">
-               <padding>
-                  <Insets right="5.0" />
-               </padding>
-            </Label>
-            <TextField fx:id="templateFileTextField" disable="true" prefHeight="39.0" prefWidth="598.0" />
-            <Button mnemonicParsing="false" onAction="#onTemplateBrowse" prefHeight="40.0" prefWidth="170.0" text="Browse" />
-         </children>
-         <VBox.margin>
-            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-         </VBox.margin>
-      </HBox>
-      <TabPane prefHeight="597.0" prefWidth="784.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Transactions">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="transactionsTable" prefHeight="554.6666666666666" prefWidth="784.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <columns>
-                            <TableColumn editable="false" prefWidth="75.0" text="Date" />
-                            <TableColumn editable="false" prefWidth="75.0" text="Name" />
-                              <TableColumn editable="false" prefWidth="75.0" text="Address" />
-                              <TableColumn editable="false" prefWidth="75.0" text="Account" />
-                              <TableColumn editable="false" prefWidth="75.0" text="Class" />
-                              <TableColumn editable="false" prefWidth="75.0" text="Amount" />
-                          </columns>
-                        </TableView>
-                     </children></AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Donors">
-            <content>
-              <AnchorPane />
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-   </children>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0"
+      prefWidth="784.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.github.kfang.MainController">
+    <children>
+        <HBox>
+            <children>
+                <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="190.0" text="Donors File:">
+                    <padding>
+                        <Insets right="5.0"/>
+                    </padding>
+                </Label>
+                <TextField fx:id="donorsFileTextField" disable="true" prefHeight="39.0" prefWidth="598.0"/>
+                <Button mnemonicParsing="false" onAction="#onDonorsBrowse" prefHeight="40.0" prefWidth="170.0"
+                        text="Browse"/>
+            </children>
+            <VBox.margin>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+            </VBox.margin>
+        </HBox>
+        <HBox>
+            <children>
+                <Label alignment="BOTTOM_RIGHT" prefHeight="40.0" prefWidth="190.0" text="Template File:">
+                    <padding>
+                        <Insets right="5.0"/>
+                    </padding>
+                </Label>
+                <TextField fx:id="templateFileTextField" disable="true" prefHeight="39.0" prefWidth="598.0"/>
+                <Button mnemonicParsing="false" onAction="#onTemplateBrowse" prefHeight="40.0" prefWidth="170.0"
+                        text="Browse"/>
+            </children>
+            <VBox.margin>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+            </VBox.margin>
+        </HBox>
+        <TabPane prefHeight="597.0" prefWidth="784.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Transactions">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="transactionsTable" prefHeight="554.6666666666666" prefWidth="784.0"
+                                           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <columns>
+                                        <TableColumn editable="false" prefWidth="75.0" text="Date">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="date"/>
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn editable="false" prefWidth="75.0" text="Name">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="name"/>
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn editable="false" prefWidth="75.0" text="Address">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="address"/>
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn editable="false" prefWidth="75.0" text="Account">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="account"/>
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn editable="false" prefWidth="75.0" text="Fund">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="fund"/>
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn editable="false" prefWidth="75.0" text="Amount">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="amount"/>
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn editable="false" prefWidth="75.0" text="Check">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="check"/>
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                    </columns>
+                                    <items>
+                                        <FXCollections fx:id="transactionsTableItems" fx:factory="observableArrayList"/>
+                                    </items>
+                                </TableView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Donors">
+                    <content>
+                        <AnchorPane>
+                            <children>
+                                <TableView prefHeight="515.0" prefWidth="784.0" AnchorPane.bottomAnchor="0.0"
+                                           AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                           AnchorPane.topAnchor="0.0">
+                                    <columns>
+                                        <TableColumn minWidth="-1.0" prefWidth="157.0" text="Name">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="name"/>
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="285.0" text="Address">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="address"/>
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="201.0" text="# Transactions">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="numReceipts"/>
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="140.0" text="Total">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="totalAmount"/>
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                    </columns>
+                                    <items>
+                                        <FXCollections fx:id="donorTableItems" fx:factory="observableArrayList"/>
+                                    </items>
+                                </TableView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
 </VBox>
